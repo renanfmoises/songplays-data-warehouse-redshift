@@ -1,3 +1,7 @@
+<picture>
+<img src="/repo/img/data-warehouse-amazon-redshift.png" width="900">
+</picture>
+
 # Data Warehouse with Amazon Redshift
 
 ## Motivation
