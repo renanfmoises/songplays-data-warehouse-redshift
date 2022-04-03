@@ -90,7 +90,7 @@ Using the song and log datasets, a star schema has been developed that was optim
 
 ### Fact Table
 
-1. songplays - records in log data associated with song plays i.e. records with page `NextSong`:
+1. **songplays** - records in log data associated with song plays i.e. records with page `NextSong`:
 
    - `songplay_id`;
    - `start_time`;
@@ -104,7 +104,7 @@ Using the song and log datasets, a star schema has been developed that was optim
 
 ### Dimension Tables
 
-1. users - users in the app
+1. **users** - users in the app
 
     - `user_id`;
     - `first_name`;
@@ -112,7 +112,7 @@ Using the song and log datasets, a star schema has been developed that was optim
     - `gender`;
     - `level`.
 
-2. songs - songs in music database
+2. **songs** - songs in music database
 
     - `song_id`;
     - `title`;
@@ -120,7 +120,7 @@ Using the song and log datasets, a star schema has been developed that was optim
     - `year`;
     - `duration`.
 
-3. artists - artists in music database
+3. **artists** - artists in music database
 
     - `artist_id`;
     - `name`;
@@ -128,7 +128,7 @@ Using the song and log datasets, a star schema has been developed that was optim
     - `latitude`;
     - `longitude`.
 
-4. time - timestamps of records in songplays broken down into specific units
+4. **time** - timestamps of records in songplays broken down into specific units
 
     - `start_time`;
     - `hour`;
@@ -139,7 +139,7 @@ Using the song and log datasets, a star schema has been developed that was optim
     - `weekday`.
 
 
-To run the create_tables.py script, open a terminal window and run the following command:
+To run the `create_tables.py` script, open a terminal window and run the following command:
 
 ```bash
 python create_tables.py
