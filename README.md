@@ -61,7 +61,7 @@ log_data/2018/11/2018-11-13-events.json
 
 And below is an example of what the data in a log file, `2018-11-12-events.json`, looks like.
 
-```python
+```json
 {
     "artist": "Olivia Ruiz",
     "auth": "Logged In",
