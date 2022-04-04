@@ -1,5 +1,5 @@
 <picture>
-<img src="/repo/img/data-warehouse-amazon-redshift-resized.png" width="900">
+<img src="/repo/img/data-warehouse-amazon-redshift.png" width="900">
 </picture>
 
 # Data Warehouse with Amazon Redshift
@@ -83,7 +83,7 @@ And below is an example of what the data in a log file, `2018-11-12-events.json`
     "song": "Cabaret Blanco",
     "status": 200,
     "ts": 1541300540796,
-    "userAgent": "\'Mozilla\/5.0 (Windows NT 5.1) AppleWebKit\/537.36   (KHTML, like Gecko) Chrome\/36.0.1985.143 Safari\/537.36\'",
+    "userAgent": "\"Mozilla\/5.0 (Windows NT 5.1) AppleWebKit\/537.36   (KHTML, like Gecko) Chrome\/36.0.1985.143 Safari\/537.36\"",
     "userId": "43"
 }
 ```
