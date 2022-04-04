@@ -5,10 +5,10 @@ install_requirements:
 	@pip install -r requirements.txt
 
 check_code:
-	@flake8 scripts/* people-analytics/*.py
+	@flake8 *.py
 
 black:
-	@black scripts/* people-analytics/*.py
+	@black *.py
 
 test:
 	@coverage run -m pytest tests/*.py
@@ -20,16 +20,16 @@ ftest:
 clean:
 	@rm -f */version.txt
 	@rm -f .coverage
-	@rm -fr */__pycache__ */*.pyc __pycache__
+	@rm -fr */*/__pycache__ */__pycache__ */*.pyc __pycache__
 	@rm -fr build dist
 	@rm -fr *.dist-info
-	@rm -fr *.egg-info
+	@rm -fr *.egg-info */*.egg-info
+	@rm -fr */.ipynb_checkpoints */*.ipynb_checkpoints
 
 install:
 	@pip install . -U
 
 all: clean install test black check_code
-
 
 uninstal:
 	@python setup.py install --record files.txt
@@ -38,11 +38,5 @@ uninstal:
 
 count_lines:
 	@find ./ -name '*.py' -exec  wc -l {} \; | sort -n| awk \
-        '{printf "%4s %s\n", $$1, $$2}{s+=$$0}END{print s}'
-	@echo ''
-	@find ./scripts -name '*-*' -exec  wc -l {} \; | sort -n| awk \
-		        '{printf "%4s %s\n", $$1, $$2}{s+=$$0}END{print s}'
-	@echo ''
-	@find ./tests -name '*.py' -exec  wc -l {} \; | sort -n| awk \
         '{printf "%4s %s\n", $$1, $$2}{s+=$$0}END{print s}'
 	@echo ''

@@ -1,5 +1,5 @@
 <picture>
-<img src="/repo/img/data-warehouse-amazon-redshift.png" width="900">
+    <img src="/repo/img/data-warehouse-amazon-redshift.png" width="900">
 </picture>
 
 # Data Warehouse with Amazon Redshift
@@ -141,7 +141,6 @@ Using the song and log datasets, a star schema has been developed that was optim
     - `month`;
     - `year`;
     - `weekday`.
-
 
 To run the `create_tables.py` script, open a terminal window and run the following command:
 
