@@ -25,7 +25,8 @@ dwhParams = namedtuple(
 )
 
 config = configparser.ConfigParser()
-config.read_file(open('dwh.cfg'))
+# config.read_file(open('dwh.cfg'))
+config.read_file(open('../dwh.cfg'))
 
 _dwh_params = dwhParams(
     KEY                     = config.get("AWS", "KEY"),

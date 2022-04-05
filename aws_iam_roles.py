@@ -7,7 +7,7 @@ from aws_params import get_params
 def get_iam_client(region_name, aws_access_key_id, aws_secret_access_key):
     """This function returns an IAM client.
     """
-    iam_client = boto3.resource(
+    iam_client = boto3.client(
         "iam",
         region_name             = region_name,
         aws_access_key_id       = aws_access_key_id,
@@ -156,7 +156,7 @@ def main():
         role_policy_document = role_policy_document
         )
 
-    # attach_role_policy(iam_client = iam_client, role_name = awsParams.IAM_ROLE_NAME)
+    attach_role_policy(iam_client = iam_client, role_name = awsParams.IAM_ROLE_NAME)
 
     check_role(iam_client = iam_client, role_name = awsParams.IAM_ROLE_NAME)
 
