@@ -1,13 +1,19 @@
 """This module keeps the SQL queries for the ETL pipeline."""
 
-import configparser
+from aws_params import get_params
+from aws_iam_roles import get_iam_client
+from aws_iam_roles import get_role_arn
 
-from config import get_config
+# GET CONFIG PARAMS
+awsParams = get_params()
 
+iam_client = get_iam_client(
+        region_name=awsParams.REGION,
+        aws_access_key_id=awsParams.KEY,
+        aws_secret_access_key=awsParams.SECRET,
+    )
 
-# CONFIG
-config = configparser.ConfigParser()
-config.read("dwh.cfg")
+role_arn = get_role_arn(iam_client, awsParams.IAM_ROLE_NAME)
 
 # DROP TABLES
 
@@ -125,14 +131,14 @@ CREATE TABLE "time"
 # STAGING TABLES
 
 staging_events_copy = (
-    f"COPY staging_events FROM '{cfg.LOG_DATA}' "
-    "CREDENTIALS 'aws_iam_role={}' "
-    f"json '{cfg.LOG_JSONPATH}';"
+    f"COPY staging_events FROM {awsParams.LOG_DATA}"
+    f"CREDENTIALS 'aws_iam_role={role_arn}' "
+    f"json {awsParams.LOG_JSONPATH};"
 )
 
 staging_songs_copy = (
-    f"COPY staging_songs FROM '{cfg.SONG_DATA}' "
-    "CREDENTIALS 'aws_iam_role={}' json 'auto';"
+    f"COPY staging_songs FROM {awsParams.SONG_DATA} "
+    f"CREDENTIALS 'aws_iam_role={role_arn}' json 'auto';"
 )
 
 # FINAL TABLES

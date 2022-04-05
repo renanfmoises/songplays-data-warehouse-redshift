@@ -1,3 +1,5 @@
+"""This module contains functions that create, check, and delete IAM roles."""
+
 import json
 import boto3
 from botocore.exceptions import ClientError

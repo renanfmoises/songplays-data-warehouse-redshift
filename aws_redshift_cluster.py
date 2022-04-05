@@ -1,7 +1,8 @@
 """This module manages the Redshift cluster and connections"""
 
-from datetime import datetime
 import time
+from datetime import datetime
+from termcolor import colored
 import boto3
 from aws_params import get_params
 from aws_iam_roles import get_iam_client
@@ -115,7 +116,7 @@ def describe_cluster(redshift_cluster, cluster_identifier):
         )
 
     except Exception as e:
-        print(e)
+        print(colored(e, "red"))
 
     else:
         print(response["Clusters"][0])
@@ -178,13 +179,13 @@ def main():
     while status != "available":
         now = datetime.now()
         dt_string = now.strftime("%d/%m/%Y %H:%M:%S")
-        print(f"{dt_string} - Cluster is not available yet")
+        print(f"{dt_string} - CREATING CLUSTER. Cluster is not available yet")
         time.sleep(14)
         status = get_cluster_status(
             redshift_client=redshift_client,
             cluster_identifier=awsParams.DWH_CLUSTER_IDENTIFIER,
         )
-    print("Cluster is available")
+    print(f"{dt_string} - CLUSTER CREATED AND AVAILABLE")
 
     ec2 = get_ec2_resource(
         region_name=awsParams.REGION,
